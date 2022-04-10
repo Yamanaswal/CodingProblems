@@ -1,6 +1,6 @@
 
 function getSumOfNNumbers(n) {
-    return (n(n + 1)) / 2
+    return (n * (n + 1)) / 2
 }
 
 // 1. Find the missing number in the array
@@ -11,12 +11,13 @@ let find_missing = function (input) {
         actualSum += input[i];
     }
 
-    let sumOfN = getSumOfNNumbers(input.length)
+    console.log(`Actual Sum: ${actualSum}`);
 
-    return actualSum - sumOfN
+    let sumOfN = getSumOfNNumbers(input.length + 1)
+    console.log(`Sum Of N: ${sumOfN}`);
+
+    return sumOfN - actualSum 
 }
-
-
 
 let random_array = [19, 14, 2, 17, 4, 12, 20, 7, 16, 9, 13, 8, 11, 18, 3, 6, 10, 1, 15];
 let actual_missing = find_missing(random_array);
