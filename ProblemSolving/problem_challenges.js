@@ -196,14 +196,36 @@ function maxSubarraySum(arr, num) {
 
 
 // Question 6: Given an array of positive integers,
-// find the smallest subarray’s length whose sum of elements is greater than a given number k.
+// Find the smallest subarray’s length whose sum of elements is greater than a given number k.
 
-// Input:  {1, 2, 3, 4, 5, 6, 7, 8}, k = 20
+// Input:  [1, 2, 3, 4, 5, 6, 7, 8], k = 20
 // Output: The smallest subarray length is 3
-// Explanation: The smallest subarray with sum > 20 is {6, 7, 8}
+// Explanation: The smallest subarray with sum > 20 is {6, 7, 8} = output is 3
 
 
-function smallesSubArray(arr, k) {
+function smallestSubArray(arr, k) {
+
+    if (arr.length === 0) {
+        return -1;
+    }
+
+    let i = 0;
+    let j = 0;
+    let sum = arr[i] + arr[j];
+    let count = 0;
+
+    while (j <= arr.length && i <= arr.length) {
+        if (sum <= k) {
+            ++j;
+            sum = sum + arr[j];
+        } else {
+            sum = sum - arr[i];
+            i++;
+            count = j;
+        }
+    }
+
+
 
 }
 
