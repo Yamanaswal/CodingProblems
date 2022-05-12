@@ -22,3 +22,4 @@ let find_missing = function (input) {
 let random_array = [19, 14, 2, 17, 4, 12, 20, 7, 16, 9, 13, 8, 11, 18, 3, 6, 10, 1, 15];
 let actual_missing = find_missing(random_array);
 console.log("actual missing is " + actual_missing);
+
