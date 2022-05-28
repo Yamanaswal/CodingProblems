@@ -1,4 +1,5 @@
 
+// Question 1 - Find Missing Numbers. (Unsorted  Array.) 
 function getSumOfNNumbers(n) {
     return (n * (n + 1)) / 2
 }
