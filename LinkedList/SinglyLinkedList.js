@@ -120,6 +120,56 @@ class SinglyLinkedList {
         return false;
     }
 
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false;
+        if (index === this.length) return !!this.push(val);
+        if (index === 0) return !!this.unshift(val);
+
+        var newNode = new Node(val);
+        var prev = this.get(index - 1);
+        var temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+        return true;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+        var previousNode = this.get(index - 1);
+        var removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
+    }
+
+    reverse() {
+        var node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        var next;
+        var prev = null;
+        for (var i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
+
+    print() {
+        var arr = [];
+        var current = this.head
+        while (current) {
+            arr.push(current.value);
+            current = current.next
+        }
+        console.log(arr);
+    }
+
 }
 
 var list = new SinglyLinkedList();
@@ -164,3 +214,12 @@ console.log(list.get(200));
 console.log("------ SETTER -----");
 console.log(list.set(0, "Set New Data..."));
 console.log(list);
+
+console.log(list.insert(0, "200"));
+console.log(list.remove(3));
+console.log(list);
+
+
+list.print();
+list.reverse();
+list.print();
