@@ -14,8 +14,8 @@ class SinglyLinkedList {
     2. check if head is null or not. if(null) ->(set head and tail to new Node.)
     3. otherwise -> 
     */
-    push(val) {
-        var node = new Node(val);
+    push(value) {
+        var node = new Node(value);
 
         console.log(node);
         if (this.head === null) {
@@ -30,14 +30,13 @@ class SinglyLinkedList {
         return this;
     }
 
-    traverse() {
-        var current = this.head;
-        while (current !== null) {
-            console.log(current.value);
-            current = current.next;
-        }
-    }
-
+    /* Pop From End of Linked List.
+    1. chech if is empty or not -> return undefined.
+    2. take two var previous and current (head node)
+    3. traverse whole list till current.next is not null
+    4. update tail with previous node which is 2nd last node before current.
+    5. case: check if (length === 0), then update (head and tail = null)
+    */
     pop() {
         if (this.head === null) {
             return undefined;
@@ -58,25 +57,110 @@ class SinglyLinkedList {
         return current;
     }
 
+    traverse() {
+        var current = this.head;
+        while (current !== null) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
+
+    /* 
+     Remove Head From Linked List.
+     1. Head will replace from its Next Node.
+     2. and check if length === 0 , then set tail to null 
+    */
+    shift() {
+        if (!this.head) {
+            return undefined;
+        }
+        var currentHead = this.head;
+        this.head = currentHead.next;
+        this.length--;
+        if (this.length === 0) {
+            this.tail = null;
+        }
+        return currentHead;
+    }
+
+    // Add New Node At Head Position.
+    unshift(value) {
+        var node = new Node(value);
+
+        if (!this.head) {
+            this.head = node;
+            this.tail = this.head;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
+        this.length++;
+        return this;
+    }
+
+    get(index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+        var counter = 0;
+        var current = this.head;
+        while (counter !== index) {
+            current = current.next;
+            counter++;
+        }
+        return current;
+    }
+
+    set(index, value) {
+        var node = this.get(index);
+        if (node) {
+            node.value = value;
+            return true;
+        }
+        return false;
+    }
+
 }
 
 var list = new SinglyLinkedList();
-list.pop();
+console.log("------- INIT ---------");
 list.push("Hello Guys Welcome..");
 list.push("Home Coming..");
 list.push("No Way Home.");
+list.push("1234567890");
+list.push("qwerty");
+
+console.log("------- Added Three Item ---------");
+
+console.log("Print List");
 console.log(list);
-console.log(list.head);
-console.log(list.tail);
-console.log(list.head.next);
-console.log("PUSH METHODS ENDED");
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.push("NEW DATA..."));
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list);
+// console.log(list.head);
+// console.log(list.tail);
+// console.log(list.head.next);
+// console.log("----- POP METHODS ---- ");
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.push("NEW DATA..."));
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log("POP ENDED");
+// console.log(list);
+
+// console.log("---- SHIFT -----");
+// list.shift();
+// console.log(list);
+// list.unshift("34");
+// console.log(list);
 
 // console.log(list.traverse());
+
+console.log("----- GETTER ------");
+console.log(list.get(2));
+console.log(list.get(-2));
+console.log(list.get(200));
+
+console.log("------ SETTER -----");
+console.log(list.set(0, "Set New Data..."));
+console.log(list);
