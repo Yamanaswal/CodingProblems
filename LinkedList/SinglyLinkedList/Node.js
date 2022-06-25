@@ -10,10 +10,3 @@ class Node {
 
 
 module.exports = Node;
-
-// var first = new Node("Hi");
-// first.next = new Node("Bro");
-// first.next.next = new Node("Wrong Node");
-// first.next.next = new Node("Right Node");
-
-// console.log(first);

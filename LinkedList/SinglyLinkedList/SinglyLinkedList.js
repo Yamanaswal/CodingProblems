@@ -1,4 +1,5 @@
 const Node = require("./Node.js");
+ 
 ///* SIngly Linked List - Base Class.
 ////
 

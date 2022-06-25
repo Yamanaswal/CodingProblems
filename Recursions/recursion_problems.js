@@ -62,3 +62,23 @@ console.log(reverse("abcdef"));
 console.log(reverse("qwerty"));
 
 
+// Question 5: Capitalize all words in a (non-empty) array. - High Level.
+
+function capitalizeWords(arr) {
+    if (arr.length === 1) {
+        return [arr[0].toUpperCase()];
+    }
+
+    let value = capitalizeWords(arr.slice(0, arr.length - 1));
+    value.push(arr[arr.length - 1].toUpperCase());
+    return value;
+}
+
+
+console.log("capitalizeWords output: ", capitalizeWords(["abc", "def", "xyz"]));
+
+// Call - Stack 
+// [abc,def,xyz] -> [ABC,DEF,XYZ] 
+// [abc,def] -> [ABC,DEF]
+// [abc] -> [ABC]
+
