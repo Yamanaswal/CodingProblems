@@ -18,7 +18,6 @@ class SinglyLinkedList {
     push(value) {
         var node = new Node(value);
 
-        console.log(node);
         if (this.head === null) {
             this.head = node;
             this.tail = node;
