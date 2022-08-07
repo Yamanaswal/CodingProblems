@@ -44,6 +44,28 @@ class Graph {
         return true;
     }
 
+    DFS_Recursive(vertex) {
+        const visited = {};
+        const result = [];
+        const adjacencyList = this.adjacentList;
+
+        function dfs(vertex) {
+            if (!vertex) {
+                return null;
+            }
+            visited[vertex] = true;
+            result.push(vertex);
+
+            adjacencyList[vertex].forEach(element => {
+                if (!visited[element]) {
+                    return dfs(element);
+                }
+            });
+        }
+
+        dfs(vertex);
+        return result;
+    }
 }
 
 
@@ -79,3 +101,22 @@ console.log("--------- Graph Remove Vertex ------");
 graph.removeVertex("Delhi");
 graph.removeVertex("XYZ");
 console.log(graph);
+
+console.log("--------- Graph - DFS_Recursive ------");
+graph = new Graph();
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+graph.addEdge("B", "D");
+graph.addEdge("C", "E");
+graph.addEdge("D", "E");
+graph.addEdge("D", "F");
+graph.addEdge("E", "F");
+console.log(graph);
+
+console.log("Graph: Recursive Way", graph.DFS_Recursive("A"));
