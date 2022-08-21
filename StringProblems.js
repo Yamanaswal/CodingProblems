@@ -24,8 +24,6 @@ function reverseWordInString(str) {
 
 }
 
-// console.log(reverseWordInString("i.like.this.program.very.much"));
-
 
 /* 
 
@@ -85,9 +83,6 @@ function longestCommonPrefix(strArr) {
 
     return count;
 }
-
-
-// longestCommonPrefix(["geeksforgeeks", "geeks", "geek", "geezer"]);
 
 
 /*
