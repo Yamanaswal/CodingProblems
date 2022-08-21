@@ -83,3 +83,20 @@ function arrangeOddAndEven(arr, n) {
 let arr = [3, 2, 4, 1, 9, 8];
 console.log(arrangeOddAndEven(arr, 6));
 console.log(arr);
+
+
+function findMinArray(strArr) {
+
+    let min = strArr[0];
+
+    for (let index = 1; index < strArr.length; index++) {
+        const element = strArr[index].length;
+
+        if (element < min.length) {
+            min = strArr[index];
+        }
+
+    }
+
+    console.log(min);
+}
